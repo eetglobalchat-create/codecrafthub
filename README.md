@@ -42,6 +42,10 @@ npm start
 
 The `start` script runs `app.js`, and the server listens on port `5000`.
 
+Open http://localhost:5000 in your browser to use the course interface. Open the
+page through this server instead of opening `index.html` directly or through a
+separate development server, so the page and API share the same origin.
+
 For automatic restarts during development:
 
 ```bash

@@ -10,6 +10,12 @@ const ALLOWED_STATUSES = ['Not Started', 'In Progress', 'Completed'];
 // Parse JSON request bodies before the course routes handle them.
 app.use(express.json());
 
+// Serve the interface from the same origin as its API requests.
+app.get(['/', '/index.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Create the JSON file the first time the application needs it.
 async function ensureCoursesFile() {
   try {

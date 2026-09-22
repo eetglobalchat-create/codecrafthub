@@ -34,6 +34,7 @@ Verify the Express CRUD API, input validation, JSON persistence, and error handl
 |---|---|
 | `GET /api/courses` with an empty file | `200` and `[]` |
 | `GET /api/courses` with records | `200` and all records |
+| `GET /api/courses/stats` | `200`, total course count, and counts for all three statuses |
 | `GET /api/courses/:id` for an existing course | `200` and matching record |
 | `GET /api/courses/:id` for an unknown ID | `404` |
 | Valid `POST /api/courses` | `201`, generated ID, timestamp, and persisted record |

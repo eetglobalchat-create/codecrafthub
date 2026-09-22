@@ -27,11 +27,11 @@ Create and update requests must include non-empty `name`, `description`, `target
 2. **JSON storage:** create missing `courses.json` with `[]`; read, parse, validate the array, and write formatted JSON.
 3. **Validation:** reject missing or whitespace-only fields, invalid dates, and invalid statuses.
 4. **Course operations:** generate IDs, create records, find by ID, update while preserving generated fields, and delete.
-5. **Routes:** implement `POST /api/courses`, `GET /api/courses`, `GET /api/courses/:id`, `PUT /api/courses/:id`, and `DELETE /api/courses/:id`.
+5. **Routes:** implement `POST /api/courses`, `GET /api/courses`, `GET /api/courses/stats`, `GET /api/courses/:id`, `PUT /api/courses/:id`, and `DELETE /api/courses/:id`.
 6. **Error handling:** return `400` for invalid input, `404` for missing IDs, and `500` for storage or unexpected failures.
 7. **Verification:** run syntax checks, tests, and a live CRUD smoke sequence on port 5000.
-8. **Documentation:** keep `README.md` current with the project overview, features, installation, startup, endpoint examples, and troubleshooting guidance.
+8. **Documentation:** keep `README.md` current with the project overview, features, installation, startup, endpoint examples, and troubleshooting guidance; record releases in `CHANGELOG.md`.
 
 ## Completion Criteria
 
-The implementation is complete when all required routes and fields work as documented, `courses.json` is created automatically, errors return the documented status codes, the server runs on port 5000, `README.md` provides complete usage guidance, and the checks pass without modifying unrelated data.
+The implementation is complete when all required routes and fields, including course statistics, work as documented, `courses.json` is created automatically, errors return the documented status codes, the server runs on port 5000, `README.md` and `CHANGELOG.md` provide current project documentation, and the checks pass without modifying unrelated data.

@@ -28,6 +28,7 @@ codecrafthub/
 ├── app.js             # Express application and route handlers
 ├── courses.json       # Local course records; created automatically if missing
 ├── package.json
+├── CHANGELOG.md       # Release history
 └── README.md
 ```
 
@@ -52,11 +53,14 @@ The server listens on port `5000` and exposes these routes:
 |---|---|---|
 | `POST` | `/api/courses` | Add a new course |
 | `GET` | `/api/courses` | Return all courses |
+| `GET` | `/api/courses/stats` | Return total and status statistics |
 | `GET` | `/api/courses/:id` | Return one course by ID |
 | `PUT` | `/api/courses/:id` | Update a course by ID |
 | `DELETE` | `/api/courses/:id` | Delete a course by ID |
 
 `POST` and `PUT` require `name`, `description`, `target_date`, and `status`. The server rejects missing fields, invalid dates, and values outside the three allowed statuses.
+
+The statistics endpoint returns `total_courses` and a `by_status` object containing counts for `Not Started`, `In Progress`, and `Completed`.
 
 ## API Behavior
 

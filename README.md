@@ -13,6 +13,7 @@ Project metadata is defined in `package.json`:
 ## Features
 
 - Create, list, view, update, and delete courses.
+- View total course and status statistics.
 - Generate numeric course IDs starting at 1.
 - Record an automatic ISO `created_at` timestamp for every course.
 - Validate required fields, real `YYYY-MM-DD` dates, and allowed statuses.
@@ -56,12 +57,15 @@ codecrafthub/
 ├── app.js
 ├── courses.json
 ├── package.json
+├── CHANGELOG.md
 ├── architecture.md
 ├── implementation-plan.md
 ├── project-requirements.md
 ├── test-strategy.md
 └── README.md
 ```
+
+Release history is recorded in [CHANGELOG.md](CHANGELOG.md).
 
 ## Course Model
 
@@ -86,6 +90,7 @@ All endpoints use the `/api/courses` resource. The `:id` placeholder is the nume
 |---|---|---|
 | `POST` | `/api/courses` | Add a new course |
 | `GET` | `/api/courses` | Get all courses |
+| `GET` | `/api/courses/stats` | Get total and status statistics |
 | `GET` | `/api/courses/:id` | Get one course |
 | `PUT` | `/api/courses/:id` | Update a course |
 | `DELETE` | `/api/courses/:id` | Delete a course |
@@ -113,6 +118,25 @@ Example list request:
 
 ```bash
 curl http://localhost:5000/api/courses
+```
+
+Example statistics request:
+
+```bash
+curl http://localhost:5000/api/courses/stats
+```
+
+Example statistics response:
+
+```json
+{
+  "total_courses": 2,
+  "by_status": {
+    "Not Started": 2,
+    "In Progress": 0,
+    "Completed": 0
+  }
+}
 ```
 
 Example get-one request:

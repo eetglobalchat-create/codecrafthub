@@ -24,12 +24,13 @@ CodeCraftHub is a single-process Node.js application using Express. It has no da
 - **Entry point:** `app.js`.
 - **Middleware:** `express.json()` parses request bodies.
 - **Resource:** `/api/courses`.
+- **Statistics endpoint:** `GET /api/courses/stats`.
 - **Port:** `5000`.
 - **Responsibilities:** routing, validation, HTTP status codes, and JSON responses.
 
 ### Course Logic
 
-Course logic remains in `app.js` to keep the beginner project easy to follow. It generates numeric IDs beginning at 1, creates ISO timestamps, validates required fields and dates, validates allowed statuses, and performs CRUD operations. Updates preserve the existing `id` and `created_at` values.
+Course logic remains in `app.js` to keep the beginner project easy to follow. It generates numeric IDs beginning at 1, creates ISO timestamps, validates required fields and dates, validates allowed statuses, performs CRUD operations, and calculates total and per-status statistics. Updates preserve the existing `id` and `created_at` values.
 
 ### JSON File Store
 
@@ -46,7 +47,7 @@ sequenceDiagram
     participant C as Client
     participant A as Express API
     participant F as courses.json
-    C->>A: GET /api/courses or /api/courses/:id
+    C->>A: GET /api/courses, /stats, or /api/courses/:id
     A->>F: readFile (utf8)
     F-->>A: JSON text
     A->>A: JSON.parse and find/filter

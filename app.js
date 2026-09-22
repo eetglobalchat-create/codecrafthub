@@ -144,6 +144,29 @@ app.get('/api/courses', async (req, res, next) => {
   }
 });
 
+// Return the total number of courses and a count for each allowed status.
+app.get('/api/courses/stats', async (req, res, next) => {
+  try {
+    const courses = await readCourses();
+    const byStatus = Object.fromEntries(
+      ALLOWED_STATUSES.map((status) => [status, 0])
+    );
+
+    for (const course of courses) {
+      if (Object.prototype.hasOwnProperty.call(byStatus, course.status)) {
+        byStatus[course.status] += 1;
+      }
+    }
+
+    return res.json({
+      total_courses: courses.length,
+      by_status: byStatus
+    });
+  } catch (error) {
+    return next(error);
+  }
+});
+
 // Return one course by its numeric ID.
 app.get('/api/courses/:id', async (req, res, next) => {
   try {
